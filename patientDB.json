@@ -1,0 +1,21 @@
+{
+  "patients": [
+    {
+      "patientName": "test 1",
+      "age": 50,
+      "gender": "male",
+      "phone": "12121212",
+      "email": "test@test.com",
+      "symptoms": "ABCD test test",
+      "existingConditions": [
+        "diabetes",
+        "none"
+      ],
+      "insuranceProvider": "Test company",
+      "memberId": "101",
+      "consentToTreatment": true,
+      "id": "1763453535693",
+      "submittedAt": "2025-11-18T08:12:15.693Z"
+    }
+  ]
+}
