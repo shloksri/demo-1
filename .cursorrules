@@ -3,17 +3,7 @@
 Please follow these rules for ALL code created or modified in this repository:
 
 1. Always refer to FRONTEND_STANDARDS.md for coding conventions.
-2. Use TypeScript for all files.
-3. Use the predefined folder structure:
-   src/components/, src/pages/, src/hooks/, src/types/
-4. All components must:
-   - Use PascalCase
-   - Have a Props interface named <ComponentName>Props
-   - Be accessible (aria labels, roles, described-by)
-5. All forms must:
-   - Use React Hook Form
-   - Use reusable components like TextField, SelectField, CheckboxGroup
-6. All validation schemas must be Zod-based and placed in /types or /schemas.
+
 
 If any code request conflicts with these rules,
 ALWAYS choose the version that aligns with FRONTEND_STANDARDS.md.

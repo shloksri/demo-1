@@ -1,4 +1,12 @@
-Tech Stack:
+# Frontend Standards & Development Guidelines
+
+This document defines the coding standards, architectural conventions, and best practices for all React applications built in this repository.  
+These rules must be followed for every component, page, hook, and utility created manually or through Cursor.
+
+---
+
+## 1. Tech Stack
+
 1. React + TypeScript for frontend
 2. Mock json file for backend, for storing form data.
 3. Use Vite for creating build
@@ -6,7 +14,7 @@ Tech Stack:
 5. npm as package manager.
 
 
-A small React app with:
+## 2. A small React app with:
 
 1. Page: /patient-intake
 2. Form fields:
@@ -18,7 +26,7 @@ A small React app with:
 - Insurance provider & member ID
 - Checkbox: “I consent to treatment”
 
-3. Requirements:
+## 3. Requirements:
 
 - All fields validated (client-side)
 - Accessible labels, errors, keyboard-friendly
@@ -27,7 +35,7 @@ A small React app with:
 
 - Submit -> fake API call -> success toast --> store the data in a json file named patientDB.json
 
-4. Folder structure
+## 4. Folder structure
 
 src/
   components/
@@ -43,22 +51,22 @@ src/
   types/
     patient.ts
 
-5. Component rules
+## 5. Component rules
 
-6. All components:
+All components must follow these rules:
 
 - Written in TypeScript
 - Props interface named <ComponentName>Props
 - Accessibility: label + aria-describedby for errors
 - Functions in hooks/ start with useXxx and return typed objects.
 
-7. Coding conventions
+## 6. Coding conventions
 
 - Use camelCase for variables, PascalCase for components
 - No inline any
 - No untyped onChange handlers
 
-8. Form rules
+## 7. Form rules
 
 - Form validation schema in a separate file or hook
 - Show error messages only after blur or submit
