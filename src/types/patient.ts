@@ -1,6 +1,7 @@
 export interface Patient {
   id?: string;
   patientName: string;
+  emergencyContactName: string;
   age: number;
   gender: string;
   bloodGroup: string;
@@ -16,6 +17,7 @@ export interface Patient {
 
 export interface PatientFormData {
   patientName: string;
+  emergencyContactName: string;
   age: string;
   gender: string;
   bloodGroup: string;
@@ -30,6 +32,7 @@ export interface PatientFormData {
 
 export interface PatientFormErrors {
   patientName?: string;
+  emergencyContactName?: string;
   age?: string;
   gender?: string;
   bloodGroup?: string;
@@ -44,6 +47,7 @@ export interface PatientFormErrors {
 
 export interface PatientFormTouched {
   patientName?: boolean;
+  emergencyContactName?: boolean;
   age?: boolean;
   gender?: boolean;
   bloodGroup?: boolean;

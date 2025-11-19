@@ -8,6 +8,7 @@ import { submitPatientData } from '../utils/api';
 
 const initialValues: PatientFormData = {
   patientName: '',
+  emergencyContactName: '',
   age: '',
   gender: '',
   bloodGroup: '',
@@ -28,6 +29,13 @@ const validateForm = (values: PatientFormData): PatientFormErrors => {
     errors.patientName = 'Patient name is required';
   } else if (values.patientName.trim().length < 2) {
     errors.patientName = 'Patient name must be at least 2 characters';
+  }
+
+  // Emergency contact name validation
+  if (!values.emergencyContactName.trim()) {
+    errors.emergencyContactName = 'Emergency contact name is required';
+  } else if (values.emergencyContactName.trim().length < 2) {
+    errors.emergencyContactName = 'Emergency contact name must be at least 2 characters';
   }
 
   // Age validation
@@ -144,6 +152,7 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
       // Mark all fields as touched
       const allTouched: PatientFormTouched = {
         patientName: true,
+        emergencyContactName: true,
         age: true,
         gender: true,
         bloodGroup: true,
@@ -172,6 +181,7 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
         // Convert form data to API format
         const patientData = {
           patientName: values.patientName.trim(),
+          emergencyContactName: values.emergencyContactName.trim(),
           age: parseInt(values.age, 10),
           gender: values.gender,
           bloodGroup: values.bloodGroup,
