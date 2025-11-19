@@ -163,6 +163,21 @@ export const PatientIntakePage = () => {
             autoComplete="tel"
           />
 
+          {/* Emergency Contact Phone */}
+          <TextField
+            id="emergencyContactPhone"
+            label="Emergency Contact Phone"
+            type="tel"
+            value={values.emergencyContactPhone}
+            onChange={(e) => handleChange('emergencyContactPhone', e.target.value)}
+            onBlur={() => handleBlur('emergencyContactPhone')}
+            error={errors.emergencyContactPhone}
+            touched={touched.emergencyContactPhone}
+            showError={showError('emergencyContactPhone')}
+            required
+            autoComplete="tel"
+          />
+
           {/* Email */}
           <TextField
             id="email"
