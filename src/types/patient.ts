@@ -6,6 +6,7 @@ export interface Patient {
   gender: string;
   bloodGroup: string;
   phone: string;
+  emergencyContactPhone: string;
   email: string;
   symptoms: string;
   existingConditions: string[];
@@ -22,6 +23,7 @@ export interface PatientFormData {
   gender: string;
   bloodGroup: string;
   phone: string;
+  emergencyContactPhone: string;
   email: string;
   symptoms: string;
   existingConditions: string[];
@@ -37,6 +39,7 @@ export interface PatientFormErrors {
   gender?: string;
   bloodGroup?: string;
   phone?: string;
+  emergencyContactPhone?: string;
   email?: string;
   symptoms?: string;
   existingConditions?: string;
@@ -52,6 +55,7 @@ export interface PatientFormTouched {
   gender?: boolean;
   bloodGroup?: boolean;
   phone?: boolean;
+  emergencyContactPhone?: boolean;
   email?: boolean;
   symptoms?: boolean;
   existingConditions?: boolean;

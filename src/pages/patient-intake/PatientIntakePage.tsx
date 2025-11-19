@@ -186,6 +186,21 @@ export const PatientIntakePage = () => {
                   </Grid>
                   <Grid size={{ xs: 12, md: 6 }}>
                     <TextField
+                      id="emergencyContactPhone"
+                      label="Emergency Contact Phone"
+                      type="tel"
+                      value={values.emergencyContactPhone}
+                      onChange={(e) => handleChange('emergencyContactPhone', e.target.value)}
+                      onBlur={() => handleBlur('emergencyContactPhone')}
+                      error={errors.emergencyContactPhone}
+                      touched={touched.emergencyContactPhone}
+                      showError={showError('emergencyContactPhone')}
+                      required
+                      autoComplete="tel"
+                    />
+                  </Grid>
+                  <Grid size={{ xs: 12, md: 6 }}>
+                    <TextField
                       id="email"
                       label="Email Address"
                       type="email"

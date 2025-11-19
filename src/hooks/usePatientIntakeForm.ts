@@ -13,6 +13,7 @@ const initialValues: PatientFormData = {
   gender: '',
   bloodGroup: '',
   phone: '',
+  emergencyContactPhone: '',
   email: '',
   symptoms: '',
   existingConditions: [],
@@ -65,6 +66,17 @@ const validateForm = (values: PatientFormData): PatientFormErrors => {
     const phoneRegex = /^[\d\s\-\+\(\)]+$/;
     if (!phoneRegex.test(values.phone.trim())) {
       errors.phone = 'Please enter a valid phone number';
+    }
+  }
+
+  // Emergency contact phone validation
+  if (!values.emergencyContactPhone.trim()) {
+    errors.emergencyContactPhone = 'Emergency contact phone is required';
+  } else {
+    // Remove all non-digit characters and check if exactly 10 digits
+    const digitsOnly = values.emergencyContactPhone.replace(/\D/g, '');
+    if (digitsOnly.length !== 10) {
+      errors.emergencyContactPhone = 'Emergency contact phone must be exactly 10 digits';
     }
   }
 
@@ -157,6 +169,7 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
         gender: true,
         bloodGroup: true,
         phone: true,
+        emergencyContactPhone: true,
         email: true,
         symptoms: true,
         existingConditions: true,
@@ -186,6 +199,7 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
           gender: values.gender,
           bloodGroup: values.bloodGroup,
           phone: values.phone.trim(),
+          emergencyContactPhone: values.emergencyContactPhone.replace(/\D/g, ''),
           email: values.email.trim(),
           symptoms: values.symptoms.trim(),
           existingConditions: values.existingConditions,
