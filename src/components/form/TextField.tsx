@@ -29,8 +29,10 @@ export const TextField = ({
         label={label}
         error={hasError}
         aria-describedby={hasError ? errorId : undefined}
+        variant="filled"
+        size="small"
+        color="secondary"
         fullWidth
-        margin="normal"
       />
       {hasError && <FormError error={error} id={errorId} />}
     </>

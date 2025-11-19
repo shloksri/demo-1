@@ -71,3 +71,101 @@ All components must follow these rules:
 - Form validation schema in a separate file or hook
 - Show error messages only after blur or submit
 - Disable submit button while submitting
+
+---
+
+## 8. Visual Style Rules (dev2 only)
+
+> These rules apply only to the **dev2** branch and override any baseline visual style rules in this document.
+
+In this branch, all form components must follow these **MUI style rules**:
+
+### 8.1 Text Inputs (`<TextField>`)
+
+- Must use MUI `<TextField>` with:
+  - `variant="filled"`
+  - `size="small"`
+  - `color="secondary"`
+  - `fullWidth={true}` for all major fields
+- The visual feel should be:
+  - Compact
+  - Slightly denser than the baseline
+  - Suitable for a professional healthcare dashboard
+
+### 8.2 Select Inputs (`<SelectField>`)
+
+- Must use the MUI form controls with:
+  - `variant="filled"`
+  - `size="small"`
+  - `color="secondary"`
+  - `fullWidth={true}`
+
+### 8.3 Checkbox Group (`<CheckboxGroup>`)
+
+- All checkboxes must:
+  - Use `size="small"`
+  - Use `color="secondary"`
+- Group labels must use MUI `Typography` with a clear label style (e.g. `variant="subtitle1"`).
+
+---
+
+## 9. Layout Rules for PatientIntakePage (dev2 only)
+
+> These layout rules apply only to the **dev2** branch and override any generic layout recommendations above.
+
+In this branch, the `/patient-intake` page must:
+
+1. **Use Sectioned Cards**
+
+   - Divide the form into three logical sections, each wrapped in an MUI `<Card>`:
+     1. **Patient Details**
+        - Name, age, gender
+     2. **Contact & Insurance**
+        - Phone, email, insurance provider, member ID
+     3. **Medical Information**
+        - Symptoms description, existing conditions, consent checkbox
+
+   - Each `<Card>` must:
+     - Use `<CardContent>` for the content
+     - Use `<CardHeader>` or a `Typography` heading (e.g. `variant="h6"`) for section titles
+
+2. **Use Responsive Grid Layout**
+
+   - Use MUI `<Grid container spacing={2}>` for the form layout.
+   - On **small screens (`xs`)**:
+     - All fields should span full width (`Grid item xs={12}`).
+   - On **medium and larger screens (`md` and up)**:
+     - Basic fields like name, age, gender, phone, email should be laid out in two columns where appropriate (`Grid item xs={12} md={6}`).
+
+3. **Preserve Behavior**
+
+   - Field order, validation, and submit logic must remain identical to the baseline.
+   - Only layout and visual grouping may change.
+
+---
+
+## 10. Error Presentation Rules (dev2 only)
+
+> These error presentation rules apply only to the **dev2** branch and override any generic error styling.
+
+In this branch, all validation errors must be displayed using the `<FormError>` component styled as an MUI `<Alert>`.
+
+### 10.1 FormError Component
+
+- `<FormError>` must:
+  - Wrap the error message inside:
+    ```tsx
+    <Alert severity="error" variant="outlined" role="alert">
+      {message}
+    </Alert>
+    ```
+  - Be rendered directly under the field it belongs to.
+  - Be accessible:
+    - Use `role="alert"` on the Alert
+    - Integrate with `aria-describedby` from the input
+
+### 10.2 Error Usage Rules
+
+- Fields must **not** show raw strings or plain `Typography` for errors.
+- All field-level errors must go through `<FormError>`.
+- The behavior for **when** errors appear (on blur / submit) must follow the existing Form rules section of this document.

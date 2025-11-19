@@ -40,7 +40,9 @@ export const SelectField = ({
   return (
     <FormControl
       fullWidth
-      margin="normal"
+      variant="filled"
+      size="small"
+      color="secondary"
       error={hasError}
       required={required}
       disabled={disabled}

@@ -1,9 +1,9 @@
 import {
   FormControl,
-  FormLabel,
   FormGroup,
   FormControlLabel,
   Checkbox,
+  Typography,
 } from '@mui/material';
 import { FormError } from './FormError';
 
@@ -49,13 +49,14 @@ export const CheckboxGroup = ({
     <FormControl
       component="fieldset"
       fullWidth
-      margin="normal"
       error={hasError}
       required={required}
       disabled={disabled}
       aria-describedby={hasError ? errorId : undefined}
     >
-      <FormLabel component="legend">{label}</FormLabel>
+      <Typography variant="subtitle1" component="legend" sx={{ mb: 1 }}>
+        {label}
+      </Typography>
       <FormGroup>
         {options.map((option) => (
           <FormControlLabel
@@ -65,6 +66,8 @@ export const CheckboxGroup = ({
                 checked={values.includes(option.value)}
                 onChange={(e) => handleChange(option.value, e.target.checked)}
                 onBlur={onBlur}
+                size="small"
+                color="secondary"
               />
             }
             label={option.label}
