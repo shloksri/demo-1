@@ -91,6 +91,20 @@ export const PatientIntakePage = () => {
             autoComplete="name"
           />
 
+          {/* Emergency Contact Name */}
+          <TextField
+            id="emergencyContactName"
+            label="Emergency Contact Name"
+            value={values.emergencyContactName}
+            onChange={(e) => handleChange('emergencyContactName', e.target.value)}
+            onBlur={() => handleBlur('emergencyContactName')}
+            error={errors.emergencyContactName}
+            touched={touched.emergencyContactName}
+            showError={showError('emergencyContactName')}
+            required
+            autoComplete="name"
+          />
+
           {/* Age */}
           <TextField
             id="age"
