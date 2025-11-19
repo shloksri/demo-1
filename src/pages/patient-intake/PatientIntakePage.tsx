@@ -22,6 +22,18 @@ const genderOptions = [
   { value: 'prefer-not-to-say', label: 'Prefer not to say' },
 ];
 
+const bloodGroupOptions = [
+  { value: 'A+', label: 'A+' },
+  { value: 'A-', label: 'A-' },
+  { value: 'B+', label: 'B+' },
+  { value: 'B-', label: 'B-' },
+  { value: 'AB+', label: 'AB+' },
+  { value: 'AB-', label: 'AB-' },
+  { value: 'O+', label: 'O+' },
+  { value: 'O-', label: 'O-' },
+  { value: 'Other', label: 'Other' },
+];
+
 const existingConditionsOptions = [
   { value: 'diabetes', label: 'Diabetes' },
   { value: 'hypertension', label: 'Hypertension' },
@@ -92,6 +104,20 @@ export const PatientIntakePage = () => {
             showError={showError('age')}
             required
             inputProps={{ min: 1, max: 150 }}
+          />
+
+          {/* Blood Group */}
+          <SelectField
+            id="bloodGroup"
+            label="Blood Group"
+            value={values.bloodGroup}
+            onChange={(value) => handleChange('bloodGroup', value)}
+            onBlur={() => handleBlur('bloodGroup')}
+            options={bloodGroupOptions}
+            error={errors.bloodGroup}
+            touched={touched.bloodGroup}
+            showError={showError('bloodGroup')}
+            required
           />
 
           {/* Gender */}
