@@ -10,6 +10,7 @@ const initialValues: PatientFormData = {
   patientName: '',
   age: '',
   gender: '',
+  bloodGroup: '',
   phone: '',
   email: '',
   symptoms: '',
@@ -42,6 +43,11 @@ const validateForm = (values: PatientFormData): PatientFormErrors => {
   // Gender validation
   if (!values.gender) {
     errors.gender = 'Gender is required';
+  }
+
+  // Blood group validation
+  if (!values.bloodGroup) {
+    errors.bloodGroup = 'Blood group is required';
   }
 
   // Phone validation
@@ -140,6 +146,7 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
         patientName: true,
         age: true,
         gender: true,
+        bloodGroup: true,
         phone: true,
         email: true,
         symptoms: true,
@@ -167,6 +174,7 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
           patientName: values.patientName.trim(),
           age: parseInt(values.age, 10),
           gender: values.gender,
+          bloodGroup: values.bloodGroup,
           phone: values.phone.trim(),
           email: values.email.trim(),
           symptoms: values.symptoms.trim(),

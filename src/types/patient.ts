@@ -3,6 +3,7 @@ export interface Patient {
   patientName: string;
   age: number;
   gender: string;
+  bloodGroup: string;
   phone: string;
   email: string;
   symptoms: string;
@@ -17,6 +18,7 @@ export interface PatientFormData {
   patientName: string;
   age: string;
   gender: string;
+  bloodGroup: string;
   phone: string;
   email: string;
   symptoms: string;
@@ -30,6 +32,7 @@ export interface PatientFormErrors {
   patientName?: string;
   age?: string;
   gender?: string;
+  bloodGroup?: string;
   phone?: string;
   email?: string;
   symptoms?: string;
@@ -43,6 +46,7 @@ export interface PatientFormTouched {
   patientName?: boolean;
   age?: boolean;
   gender?: boolean;
+  bloodGroup?: boolean;
   phone?: boolean;
   email?: boolean;
   symptoms?: boolean;
