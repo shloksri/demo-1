@@ -8,13 +8,17 @@ import { submitPatientData } from '../utils/api';
 
 const initialValues: PatientFormData = {
   patientName: '',
+  emergencyContactName: '',
   age: '',
   gender: '',
+  bloodGroup: '',
   phone: '',
+  emergencyContactPhone: '',
   email: '',
   symptoms: '',
   existingConditions: [],
   insuranceProvider: '',
+  insuranceIssuedYear: '',
   memberId: '',
   consentToTreatment: false,
 };
@@ -27,6 +31,13 @@ const validateForm = (values: PatientFormData): PatientFormErrors => {
     errors.patientName = 'Patient name is required';
   } else if (values.patientName.trim().length < 2) {
     errors.patientName = 'Patient name must be at least 2 characters';
+  }
+
+  // Emergency contact name validation
+  if (!values.emergencyContactName.trim()) {
+    errors.emergencyContactName = 'Emergency contact name is required';
+  } else if (values.emergencyContactName.trim().length < 2) {
+    errors.emergencyContactName = 'Emergency contact name must be at least 2 characters';
   }
 
   // Age validation
@@ -44,6 +55,11 @@ const validateForm = (values: PatientFormData): PatientFormErrors => {
     errors.gender = 'Gender is required';
   }
 
+  // Blood group validation
+  if (!values.bloodGroup) {
+    errors.bloodGroup = 'Blood group is required';
+  }
+
   // Phone validation
   if (!values.phone.trim()) {
     errors.phone = 'Phone number is required';
@@ -51,6 +67,17 @@ const validateForm = (values: PatientFormData): PatientFormErrors => {
     const phoneRegex = /^[\d\s\-\+\(\)]+$/;
     if (!phoneRegex.test(values.phone.trim())) {
       errors.phone = 'Please enter a valid phone number';
+    }
+  }
+
+  // Emergency contact phone validation
+  if (!values.emergencyContactPhone.trim()) {
+    errors.emergencyContactPhone = 'Emergency contact phone is required';
+  } else {
+    // Remove all non-digit characters and check if exactly 10 digits
+    const digitsOnly = values.emergencyContactPhone.replace(/\D/g, '');
+    if (digitsOnly.length !== 10) {
+      errors.emergencyContactPhone = 'Emergency contact phone must be exactly 10 digits';
     }
   }
 
@@ -74,6 +101,16 @@ const validateForm = (values: PatientFormData): PatientFormErrors => {
   // Insurance provider validation
   if (!values.insuranceProvider.trim()) {
     errors.insuranceProvider = 'Insurance provider is required';
+  }
+
+  // Insurance issued year validation
+  if (!values.insuranceIssuedYear) {
+    errors.insuranceIssuedYear = 'Insurance issued year is required';
+  } else {
+    const year = parseInt(values.insuranceIssuedYear, 10);
+    if (isNaN(year) || year < 1930 || year > 2025) {
+      errors.insuranceIssuedYear = 'Insurance issued year must be between 1930 and 2025';
+    }
   }
 
   // Member ID validation
@@ -138,13 +175,17 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
       // Mark all fields as touched
       const allTouched: PatientFormTouched = {
         patientName: true,
+        emergencyContactName: true,
         age: true,
         gender: true,
+        bloodGroup: true,
         phone: true,
+        emergencyContactPhone: true,
         email: true,
         symptoms: true,
         existingConditions: true,
         insuranceProvider: true,
+        insuranceIssuedYear: true,
         memberId: true,
         consentToTreatment: true,
       };
@@ -165,13 +206,17 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
         // Convert form data to API format
         const patientData = {
           patientName: values.patientName.trim(),
+          emergencyContactName: values.emergencyContactName.trim(),
           age: parseInt(values.age, 10),
           gender: values.gender,
+          bloodGroup: values.bloodGroup,
           phone: values.phone.trim(),
+          emergencyContactPhone: values.emergencyContactPhone.replace(/\D/g, ''),
           email: values.email.trim(),
           symptoms: values.symptoms.trim(),
           existingConditions: values.existingConditions,
           insuranceProvider: values.insuranceProvider.trim(),
+          insuranceIssuedYear: values.insuranceIssuedYear,
           memberId: values.memberId.trim(),
           consentToTreatment: values.consentToTreatment,
         };

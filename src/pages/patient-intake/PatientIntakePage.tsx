@@ -22,6 +22,18 @@ const genderOptions = [
   { value: 'prefer-not-to-say', label: 'Prefer not to say' },
 ];
 
+const bloodGroupOptions = [
+  { value: 'A+', label: 'A+' },
+  { value: 'A-', label: 'A-' },
+  { value: 'B+', label: 'B+' },
+  { value: 'B-', label: 'B-' },
+  { value: 'AB+', label: 'AB+' },
+  { value: 'AB-', label: 'AB-' },
+  { value: 'O+', label: 'O+' },
+  { value: 'O-', label: 'O-' },
+  { value: 'Other', label: 'Other' },
+];
+
 const existingConditionsOptions = [
   { value: 'diabetes', label: 'Diabetes' },
   { value: 'hypertension', label: 'Hypertension' },
@@ -30,6 +42,11 @@ const existingConditionsOptions = [
   { value: 'arthritis', label: 'Arthritis' },
   { value: 'none', label: 'None' },
 ];
+
+const insuranceIssuedYearOptions = Array.from({ length: 2025 - 1930 + 1 }, (_, i) => {
+  const year = 1930 + i;
+  return { value: year.toString(), label: year.toString() };
+});
 
 export const PatientIntakePage = () => {
   const {
@@ -79,6 +96,20 @@ export const PatientIntakePage = () => {
             autoComplete="name"
           />
 
+          {/* Emergency Contact Name */}
+          <TextField
+            id="emergencyContactName"
+            label="Emergency Contact Name"
+            value={values.emergencyContactName}
+            onChange={(e) => handleChange('emergencyContactName', e.target.value)}
+            onBlur={() => handleBlur('emergencyContactName')}
+            error={errors.emergencyContactName}
+            touched={touched.emergencyContactName}
+            showError={showError('emergencyContactName')}
+            required
+            autoComplete="name"
+          />
+
           {/* Age */}
           <TextField
             id="age"
@@ -92,6 +123,20 @@ export const PatientIntakePage = () => {
             showError={showError('age')}
             required
             inputProps={{ min: 1, max: 150 }}
+          />
+
+          {/* Blood Group */}
+          <SelectField
+            id="bloodGroup"
+            label="Blood Group"
+            value={values.bloodGroup}
+            onChange={(value) => handleChange('bloodGroup', value)}
+            onBlur={() => handleBlur('bloodGroup')}
+            options={bloodGroupOptions}
+            error={errors.bloodGroup}
+            touched={touched.bloodGroup}
+            showError={showError('bloodGroup')}
+            required
           />
 
           {/* Gender */}
@@ -119,6 +164,21 @@ export const PatientIntakePage = () => {
             error={errors.phone}
             touched={touched.phone}
             showError={showError('phone')}
+            required
+            autoComplete="tel"
+          />
+
+          {/* Emergency Contact Phone */}
+          <TextField
+            id="emergencyContactPhone"
+            label="Emergency Contact Phone"
+            type="tel"
+            value={values.emergencyContactPhone}
+            onChange={(e) => handleChange('emergencyContactPhone', e.target.value)}
+            onBlur={() => handleBlur('emergencyContactPhone')}
+            error={errors.emergencyContactPhone}
+            touched={touched.emergencyContactPhone}
+            showError={showError('emergencyContactPhone')}
             required
             autoComplete="tel"
           />
@@ -177,6 +237,20 @@ export const PatientIntakePage = () => {
             error={errors.insuranceProvider}
             touched={touched.insuranceProvider}
             showError={showError('insuranceProvider')}
+            required
+          />
+
+          {/* Insurance Issued Year */}
+          <SelectField
+            id="insuranceIssuedYear"
+            label="Insurance issued year"
+            value={values.insuranceIssuedYear}
+            onChange={(value) => handleChange('insuranceIssuedYear', value)}
+            onBlur={() => handleBlur('insuranceIssuedYear')}
+            options={insuranceIssuedYearOptions}
+            error={errors.insuranceIssuedYear}
+            touched={touched.insuranceIssuedYear}
+            showError={showError('insuranceIssuedYear')}
             required
           />
 
