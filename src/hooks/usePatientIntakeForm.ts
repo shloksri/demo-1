@@ -18,6 +18,7 @@ const initialValues: PatientFormData = {
   symptoms: '',
   existingConditions: [],
   insuranceProvider: '',
+  insuranceIssuedYear: '',
   memberId: '',
   consentToTreatment: false,
 };
@@ -102,6 +103,16 @@ const validateForm = (values: PatientFormData): PatientFormErrors => {
     errors.insuranceProvider = 'Insurance provider is required';
   }
 
+  // Insurance issued year validation
+  if (!values.insuranceIssuedYear) {
+    errors.insuranceIssuedYear = 'Insurance issued year is required';
+  } else {
+    const year = parseInt(values.insuranceIssuedYear, 10);
+    if (isNaN(year) || year < 1930 || year > 2025) {
+      errors.insuranceIssuedYear = 'Insurance issued year must be between 1930 and 2025';
+    }
+  }
+
   // Member ID validation
   if (!values.memberId.trim()) {
     errors.memberId = 'Member ID is required';
@@ -174,6 +185,7 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
         symptoms: true,
         existingConditions: true,
         insuranceProvider: true,
+        insuranceIssuedYear: true,
         memberId: true,
         consentToTreatment: true,
       };
@@ -204,6 +216,7 @@ export const usePatientIntakeForm = (): UsePatientIntakeFormReturn => {
           symptoms: values.symptoms.trim(),
           existingConditions: values.existingConditions,
           insuranceProvider: values.insuranceProvider.trim(),
+          insuranceIssuedYear: values.insuranceIssuedYear,
           memberId: values.memberId.trim(),
           consentToTreatment: values.consentToTreatment,
         };

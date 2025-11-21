@@ -11,6 +11,7 @@ export interface Patient {
   symptoms: string;
   existingConditions: string[];
   insuranceProvider: string;
+  insuranceIssuedYear: string;
   memberId: string;
   consentToTreatment: boolean;
   submittedAt?: string;
@@ -28,6 +29,7 @@ export interface PatientFormData {
   symptoms: string;
   existingConditions: string[];
   insuranceProvider: string;
+  insuranceIssuedYear: string;
   memberId: string;
   consentToTreatment: boolean;
 }
@@ -44,6 +46,7 @@ export interface PatientFormErrors {
   symptoms?: string;
   existingConditions?: string;
   insuranceProvider?: string;
+  insuranceIssuedYear?: string;
   memberId?: string;
   consentToTreatment?: string;
 }
@@ -60,6 +63,7 @@ export interface PatientFormTouched {
   symptoms?: boolean;
   existingConditions?: boolean;
   insuranceProvider?: boolean;
+  insuranceIssuedYear?: boolean;
   memberId?: boolean;
   consentToTreatment?: boolean;
 }

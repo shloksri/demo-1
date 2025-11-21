@@ -43,6 +43,11 @@ const existingConditionsOptions = [
   { value: 'none', label: 'None' },
 ];
 
+const insuranceIssuedYearOptions = Array.from({ length: 2025 - 1930 + 1 }, (_, i) => {
+  const year = 1930 + i;
+  return { value: year.toString(), label: year.toString() };
+});
+
 export const PatientIntakePage = () => {
   const {
     values,
@@ -232,6 +237,20 @@ export const PatientIntakePage = () => {
             error={errors.insuranceProvider}
             touched={touched.insuranceProvider}
             showError={showError('insuranceProvider')}
+            required
+          />
+
+          {/* Insurance Issued Year */}
+          <SelectField
+            id="insuranceIssuedYear"
+            label="Insurance issued year"
+            value={values.insuranceIssuedYear}
+            onChange={(value) => handleChange('insuranceIssuedYear', value)}
+            onBlur={() => handleBlur('insuranceIssuedYear')}
+            options={insuranceIssuedYearOptions}
+            error={errors.insuranceIssuedYear}
+            touched={touched.insuranceIssuedYear}
+            showError={showError('insuranceIssuedYear')}
             required
           />
 
