@@ -1,3 +1,6 @@
+---
+alwaysApply: true
+---
 # Frontend Standards & Development Guidelines
 
 This document defines the coding standards, architectural conventions, and best practices for all React applications built in this repository.  

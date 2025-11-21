@@ -1,9 +1,0 @@
-# Frontend Standards (Global Rules for This Project)
-
-Please follow these rules for ALL code created or modified in this repository:
-
-1. Always refer to FRONTEND_STANDARDS.md for coding conventions.
-
-
-If any code request conflicts with these rules,
-ALWAYS choose the version that aligns with FRONTEND_STANDARDS.md.
